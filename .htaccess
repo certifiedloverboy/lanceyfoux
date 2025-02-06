@@ -1,0 +1,41 @@
+# disable directory listings
+options -indexes
+
+# enable rewrite engine
+rewriteengine on
+
+# exclude rewriting for static assets like .png, .jpg, .jpeg, .gif
+rewritecond %{requesturi} !\.(png|jpg|jpeg|gif)$ [nc]
+
+# force lowercase urls (requires mod_rewrite and rewritemap support)
+rewritemap lc int:tolower
+rewritecond %{requesturi} [a-z]
+rewritecond %{requesturi} !=${lc:%{requesturi}}
+rewriterule ^(.*)$ ${lc:$1} [r=301,nc,l]
+
+# set custom error document for 404 errors
+errordocument 404 /404.html
+
+# security headers (requires mod_headers)
+<ifmodule mod_headers.c>
+  header set x-content-type-options "nosniff"
+  header set x-frame-options "deny"
+  header set x-xss-protection "1; mode=block"
+  header set referrer-policy "strict-origin-when-cross-origin"
+  header set content-security-policy "default-src 'self';"
+</ifmodule>
+
+# additional security suggestions:
+# - force https redirection (if not already handled by your host):
+# rewritecond %{https} off
+# rewriterule ^ https://%{http_host}%{request_uri} [r=301,l]
+#
+# - set caching headers for static assets:
+# <filesmatch "\.(jpg|jpeg|png|gif|css|js)$">
+#   header set cache-control "max-age=31536000, public"
+# </filesmatch>
+#
+# - limit allowed http methods:
+# <limit except="get head post">
+#   deny from all
+# </limit>
