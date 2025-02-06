@@ -2,27 +2,297 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>lanceyfoux</title>
     <meta name="description" content=" enter the dragon / tektime     lanceyfoux.com is a fan made site made by ereyec">
     <meta name="keywords" content="lancye, lancey foux, ereyec, tektime, enter the dragon">
     <meta name="robots" content="index, follow">
-    <link rel="icon" type="image/png" href="https://i.imgur.com/n7jeSZw.png">
-    <meta property="og:image" content="https://i.imgur.com/4GQ3FrR.png">
+    <meta property="og:image" content="https://i.imgur.com/4gq3FrR.png">
     <meta property="og:title" content="lanceyfoux">
     <meta property="og:description" content=" enter the dragon / tektime     lanceyfoux.com is a fan made site made by ereyec">
     <meta name="apple-mobile-web-app-title" content="lancey">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- tab icon -->
+    <link rel="icon" type="image/png" href="https://i.imgur.com/n7jeSZw.png">
+
+    <!-- ibm plex mono font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=ibm+plex+mono:wght@700&display=swap" rel="stylesheet">
+
+    <!-- change tab title on visibility -->
     <script>
-      document.addEventListener("visibilitychange", function() {
-        if (document.hidden) {
-          document.title = "lancey";
+      document.addEventListener('visibilitychange', function(){
+        if(document.hidden){
+          document.title = 'lancey';
         } else {
-          document.title = "lanceyfoux";
+          document.title = 'lanceyfoux';
         }
       });
     </script>
+
+    <style>
+      /* reset and global text set to bold ibm plex mono */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'ibm plex mono', monospace;
+        font-weight: 700;
+      }
+
+      /* highlight/selection color */
+      ::selection {
+        background-color: #e8eef2;
+      }
+      ::-moz-selection {
+        background-color: #e8eef2;
+      }
+
+      /* page fade/blur in animation */
+      body {
+        background: #fff;
+        color: #000;
+        overflow-x: hidden;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fade-in-up 0.5s ease forwards;
+      }
+      @keyframes fade-in-up {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      html, body {
+        width: 100%;
+        height: 100%;
+      }
+
+      .wrapper {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        text-align: center;
+      }
+
+      /* navigation */
+      nav {
+        width: 100%;
+        max-width: 1200px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+      }
+      nav a {
+        text-decoration: none;
+        color: #000;
+        position: relative;
+      }
+      /* underline from center animation */
+      nav a::after,
+      a.underline-center::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 1px;
+        background: #000;
+        transition: width 0.3s ease;
+      }
+      nav a:hover::after,
+      a.underline-center:hover::after {
+        width: 100%;
+      }
+
+      /* main container */
+      .main-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        align-items: center;
+        justify-content: center;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* left image */
+      .left-section img {
+        width: 390px; /* 30% bigger than 300px */
+        max-width: 80%;
+        border-radius: 7px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* heavier drop shadow */
+        pointer-events: none; /* prevent opening in new tab */
+        user-select: none;
+      }
+
+      .right-section {
+        max-width: 500px;
+        text-transform: uppercase;
+      }
+
+      .right-section h1 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      /* credits table */
+      .credits-table {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem 2rem;
+        text-align: left;
+        margin: 1.5rem auto;
+        justify-content: center;
+      }
+
+      .links-group {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 1.5rem;
+      }
+      .link-column {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+      }
+      .underline-center {
+        position: relative;
+        text-decoration: none;
+        color: #000;
+      }
+    </style>
   </head>
+
   <body>
-    <p>working on back end</p>
+    <div class="wrapper">
+      <!-- nav -->
+      <nav>
+        <a href="/" class="underline-center">LANCEY/HOME</a>
+        <a href="https://lanceyfoux.com/shop"
+           class="underline-center"
+           target="_blank">
+          SHOP
+        </a>
+      </nav>
+
+      <!-- main content -->
+      <div class="main-container">
+        <!-- left section (image) -->
+        <div class="left-section">
+          <img
+            src="https://t2.genius.com/unsafe/881x0/https%3A%2F%2Fimages.genius.com%2F142dddc53e1ec4fbfeef7247e6eaaf84.1000x1000x1.png"
+            alt="tektime / enter the dragon cover">
+        </div>
+
+        <!-- right section (text) -->
+        <div class="right-section">
+          <h1>enter the dragon / tektime</h1>
+
+          <div class="credits-table">
+            <div>featuring</div>
+            <div>bnyx°</div>
+
+            <div>producers</div>
+            <div>azure & bnyx°</div>
+
+            <div>writers</div>
+            <div>azure, bnyx° & lancey foux</div>
+
+            <div>assistant</div>
+            <div>engineer cecilia griffin</div>
+
+            <div>distributor</div>
+            <div>sony music entertainment</div>
+
+            <div>label</div>
+            <div>human re-sources & rca records</div>
+
+            <div>mastering engineer</div>
+            <div>matt hua</div>
+
+            <div>mixing engineer</div>
+            <div>matt hua</div>
+
+            <div>recording engineer</div>
+            <div>matt hua</div>
+          </div>
+
+          <!-- links -->
+          <div class="links-group">
+            <!-- stream column -->
+            <div class="link-column">
+              <div>stream...</div>
+              <a href="https://open.spotify.com/album/0IuT1gNetRGeyzLdW5VTAg"
+                 target="_blank"
+                 class="underline-center">
+                spotify
+              </a>
+              <a href="https://soundcloud.com/lancey-foux/sets/enter-the-dragon-tektime"
+                 target="_blank"
+                 class="underline-center">
+                soundcloud
+              </a>
+              <a href="https://music.apple.com/us/album/enter-the-dragon-tektime-feat-bnyx-single/1792305700"
+                 target="_blank"
+                 class="underline-center">
+                apple music
+              </a>
+            </div>
+
+            <!-- watch column -->
+            <div class="link-column">
+              <div>go watch...</div>
+              <a href="https://www.youtube.com/watch?v=zmu6oKLT9yA"
+                 target="_blank"
+                 class="underline-center">
+                enter the draggon
+                <br>
+                vizualizer
+              </a>
+              <a href="https://www.youtube.com/watch?v=Sk6SrWD6Hn8"
+                 target="_blank"
+                 class="underline-center">
+                tektime
+                <br>
+                vizualizer
+              </a>
+            </div>
+
+            <!-- buy column -->
+            <div class="link-column">
+              <div>go buy</div>
+              <a href="https://lanceyfoux.com/shop/etdtt-bundle"
+                 target="_blank"
+                 class="underline-center">
+                shop bundle
+              </a>
+              <a href="https://lanceyfoux.com/shop/etd"
+                 target="_blank"
+                 class="underline-center">
+                shop single 01
+              </a>
+              <a href="https://lanceyfoux.com/shop/tektime"
+                 target="_blank"
+                 class="underline-center">
+                shop single 02
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
