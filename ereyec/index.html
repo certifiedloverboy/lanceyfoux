@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>domain</title>
+    <meta name="description" content="the domain info page for lanceyfoux.com">
+    <meta name="keywords" content="lancye, lancey foux, ereyec, tektime, enter the dragon">
+    <meta name="robots" content="index, follow">
+    <meta property="og:image" content="https://i.imgur.com/4gq3FrR.png">
+    <meta property="og:title" content="domain">
+    <meta property="og:description" content="the domain info page for lanceyfoux.com">
+    <meta name="apple-mobile-web-app-title" content="lancey">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- tab icon -->
+    <link rel="icon" type="image/png" href="https://i.imgur.com/n7jeSZw.png">
+
+    <!-- ibm plex mono bold -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=ibm+plex+mono:wght@700&display=swap" rel="stylesheet">
+
+    <!-- change tab title on visibility -->
+    <script>
+      document.addEventListener('visibilitychange', function(){
+        if(document.hidden){
+          document.title = 'lancey';
+        } else {
+          document.title = 'domain';
+        }
+      });
+    </script>
+
+    <style>
+      /* reset & global styles (all caps, bold, ibm plex mono) */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'ibm plex mono', monospace;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      /* highlight/selection color */
+      ::selection {
+        background-color: #e8eef2;
+      }
+      ::-moz-selection {
+        background-color: #e8eef2;
+      }
+
+      /* page: fade in with slight blur from the bottom */
+      html, body {
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        color: #000;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        /* fade + blur from bottom */
+        opacity: 0;
+        transform: translateY(20px);
+        filter: blur(8px);
+        animation: fade-in-blur 0.5s ease forwards;
+      }
+      @keyframes fade-in-blur {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+          filter: blur(8px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+          filter: blur(0);
+        }
+      }
+
+      /* container for nav and content */
+      .container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* nav at top */
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+      }
+
+      /* left side: lancey/domain text */
+      .left-title {
+        position: relative;
+        display: inline-block;
+      }
+      .left-title::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 1px;
+        background: #000;
+        transition: width 0.3s ease;
+      }
+      .left-title:hover::after {
+        width: 100%;
+      }
+
+      /* right side: 2 links: shop & home, each with underline on hover */
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+      .nav-links a {
+        text-decoration: none;
+        color: #000;
+        position: relative;
+      }
+      .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 1px;
+        background: #000;
+        transition: width 0.3s ease;
+      }
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      /* main content in middle right-ish */
+      .main-content {
+        flex: 1;
+        display: flex;
+        justify-content: center; /* horizontally center */
+        align-items: center;     /* vertically center */
+      }
+      .text-box {
+        text-align: center;
+        max-width: 300px;
+      }
+
+      /* link to instagram remain in uppercase, so if you want it exact, handle it in text */
+      .insta-link {
+        text-decoration: none;
+        color: #000;
+        position: relative;
+      }
+      .insta-link::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 1px;
+        background: #000;
+        transition: width 0.3s ease;
+      }
+      .insta-link:hover::after {
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- nav -->
+      <nav>
+        <div class="left-title">lancey/domain</div>
+        <div class="nav-links">
+          <a href="https://lanceyfoux.com/shop" target="_blank">shop</a>
+          <a href="https://lanceyfoux.com" target="_blank">home</a>
+        </div>
+      </nav>
+
+      <!-- main content -->
+      <div class="main-content">
+        <div class="text-box">
+          <p>the lanceyfoux.com domain is owned by one person</p>
+          <p>that is me</p>
+          <p>the only way to contact me is on</p>
+          <p>
+            <a href="https://instagram.com/ereyec" target="_blank" class="insta-link">
+              @ereyec
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
