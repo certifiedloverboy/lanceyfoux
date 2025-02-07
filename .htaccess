@@ -1,6 +1,3 @@
-# disable directory listings
-options -indexes
-
 # enable rewrite engine
 rewriteengine on
 

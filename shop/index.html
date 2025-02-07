@@ -2,27 +2,279 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>shop</title>
     <meta name="description" content="web-shop for the website lanceyfoux made by ereyec">
     <meta name="keywords" content="lancye, lancey foux, ereyec, tektime, enter the dragon">
     <meta name="robots" content="index, follow">
-    <link rel="icon" type="image/png" href="https://i.imgur.com/n7jeSZw.png">
-    <meta property="og:image" content="https://i.imgur.com/4GQ3FrR.png">
+    <meta property="og:image" content="https://i.imgur.com/4gq3FrR.png">
     <meta property="og:title" content="shop">
     <meta property="og:description" content="web-shop for the website lanceyfoux made by ereyec">
     <meta name="apple-mobile-web-app-title" content="lancey">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- tab icon -->
+    <link rel="icon" type="image/png" href="https://i.imgur.com/n7jeSZw.png">
+
+    <!-- ibm plex mono bold -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=ibm+plex+mono:wght@700&display=swap" rel="stylesheet">
+
+    <!-- change tab title on visibility -->
     <script>
-      document.addEventListener("visibilitychange", function() {
-        if (document.hidden) {
-          document.title = "shop | lanceyfoux";
+      document.addEventListener('visibilitychange', function(){
+        if(document.hidden){
+          document.title = 'lancey';
         } else {
-          document.title = "shop";
+          document.title = 'shop';
         }
       });
     </script>
+
+    <style>
+      /* reset & global styles (all caps, bold, ibm plex mono) */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'ibm plex mono', monospace;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      /* highlight/selection color */
+      ::selection {
+        background-color: #e8eef2;
+      }
+      ::-moz-selection {
+        background-color: #e8eef2;
+      }
+
+      /* page: fade in with slight blur from the bottom */
+      html, body {
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        color: #000;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        /* fade + blur from bottom */
+        opacity: 0;
+        transform: translateY(20px);
+        filter: blur(8px);
+        animation: fade-in-blur 0.5s ease forwards;
+      }
+
+      @keyframes fade-in-blur {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+          filter: blur(8px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+          filter: blur(0);
+        }
+      }
+
+      /* container for nav, main, footer */
+      .container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* nav at top */
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+      }
+
+      /* combined 'lancey/shop' with single underline,
+         but separate clickable words */
+      .underline-center {
+        position: relative;
+        display: inline-block;
+        color: #000;
+      }
+      .underline-center::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 1px;
+        background: #000;
+        transition: width 0.3s ease;
+      }
+      .underline-center:hover::after {
+        width: 100%;
+      }
+      .slash {
+        margin: 0 0.2rem;
+      }
+
+      /* cart link */
+      .cart-icon a {
+        text-decoration: none;
+        color: #000;
+        position: relative;
+      }
+      .cart-icon a::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 1px;
+        background: #000;
+        transition: width 0.3s ease;
+      }
+      .cart-icon a:hover::after {
+        width: 100%;
+      }
+
+      /* main content: center product grid in middle of page */
+      .main {
+        flex: 1; 
+        display: flex;
+        justify-content: center; /* horizontal center */
+        align-items: center;     /* vertical center */
+      }
+      .product-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: center;
+        margin-bottom: 15px; /* 15px gap above footer */
+      }
+
+      /* product card */
+      .product-card {
+        width: 200px;
+        text-align: left;
+      }
+      /* no underline on product text or image */
+      .product-card a {
+        text-decoration: none;
+        color: #000;
+      }
+      .product-card a::after {
+        content: none;
+      }
+      .product-card img {
+        width: 100%;
+        height: auto;
+        border-radius: 7px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        user-select: none;
+        pointer-events: none;
+        margin-bottom: 0.5rem;
+      }
+      .product-card p {
+        font-size: 0.8rem;
+        margin-bottom: 0.3rem;
+      }
+      .product-card span {
+        font-size: 0.9rem;
+      }
+
+      /* footer bottom-left */
+      footer {
+        display: flex;
+        gap: 2rem;
+        margin-bottom: 1rem;
+      }
+      footer a {
+        text-decoration: none;
+        color: #000;
+        position: relative;
+      }
+      footer a::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 1px;
+        background: #000;
+        transition: width 0.3s ease;
+      }
+      footer a:hover::after {
+        width: 100%;
+      }
+    </style>
   </head>
   <body>
-    <p>working on back end</p>
+    <div class="container">
+      <!-- nav -->
+      <nav>
+        <div class="underline-center">
+          <span onclick="window.open('https://lanceyfoux.com','_blank')" style="cursor:pointer;">
+            lancey
+          </span>
+          <span class="slash">/</span>
+          <span onclick="window.open('https://lanceyfoux.com/shop','_self')" style="cursor:pointer;">
+            shop
+          </span>
+        </div>
+
+        <div class="cart-icon">
+          <a href="https://lanceyfoux.com/cart" target="_blank">cart</a>
+        </div>
+      </nav>
+
+      <!-- main: center the product grid -->
+      <div class="main">
+        <div class="product-grid">
+          <!-- product 1 -->
+          <div class="product-card">
+            <a href="https://lanceyfoux.com/shop/etdtt-bundle" target="_blank">
+              <img src="https://images.genius.com/142dddc53e1ec4fbfeef7247e6eaaf84.1000x1000x1.png" 
+                   alt="enter the dragon / tektime cover">
+              <p>enter the dragon / tektime<br>digital download</p>
+            </a>
+            <span>$6.00</span>
+          </div>
+
+          <!-- product 2 -->
+          <div class="product-card">
+            <a href="https://lanceyfoux.com/shop/etd" target="_blank">
+              <img src="https://images.genius.com/441b06c2758cfb4ce755e280a2a99850.1000x1000x1.jpg"
+                   alt="enter the dragon cover">
+              <p>enter the dragon<br>digital download</p>
+            </a>
+            <span>$3.00</span>
+          </div>
+
+          <!-- product 3 -->
+          <div class="product-card">
+            <a href="https://lanceyfoux.com/shop/tektime" target="_blank">
+              <img src="https://t2.genius.com/unsafe/881x0/https%3A%2F%2Fimages.genius.com%2Ff3069e67f0429f21a5c1c87f214e8113.1000x1000x1.jpg"
+                   alt="tektime cover">
+              <p>tektime<br>digital download</p>
+            </a>
+            <span>$3.00</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- footer -->
+      <footer>
+        <a href="https://lanceyfoux.com" target="_blank">home.</a>
+        <a href="https://lanceyfoux.com" target="_blank">domain.</a>
+      </footer>
+    </div>
   </body>
 </html>
