@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>cart</title>
+    <meta name="description" content="cart page for lanceyfoux">
+    <meta name="keywords" content="lancye, lancey foux, ereyec, tektime, enter the dragon">
+    <meta name="robots" content="index, follow">
+    <meta property="og:image" content="https://i.imgur.com/4gq3FrR.png">
+    <meta property="og:title" content="cart">
+    <meta property="og:description" content="cart page for lanceyfoux">
+    <meta name="apple-mobile-web-app-title" content="lancey">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- tab icon -->
+    <link rel="icon" type="image/png" href="https://i.imgur.com/n7jeSZw.png">
+
+    <!-- ibm plex mono bold -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=ibm+plex+mono:wght@700&display=swap" rel="stylesheet">
+
+    <!-- change tab title on visibility -->
+    <script>
+      document.addEventListener('visibilitychange', function(){
+        if(document.hidden){
+          document.title = 'lancey';
+        } else {
+          document.title = 'cart';
+        }
+      });
+    </script>
+
+    <style>
+      /* reset & global styles (all caps, bold, ibm plex mono) */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'ibm plex mono', monospace;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      /* highlight/selection color */
+      ::selection {
+        background-color: #e8eef2;
+      }
+      ::-moz-selection {
+        background-color: #e8eef2;
+      }
+
+      /* page: fade in with slight blur from the bottom */
+      html, body {
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        color: #000;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        /* fade + blur from bottom */
+        opacity: 0;
+        transform: translateY(20px);
+        filter: blur(8px);
+        animation: fade-in-blur 0.5s ease forwards;
+      }
+      @keyframes fade-in-blur {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+          filter: blur(8px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+          filter: blur(0);
+        }
+      }
+
+      /* container for nav, main, footer */
+      .container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* nav at top */
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+      }
+
+      /* "lancey/cart" with single underline, but separate words if needed */
+      .underline-center {
+        position: relative;
+        display: inline-block;
+        color: #000;
+      }
+      .underline-center::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 1px;
+        background: #000;
+        transition: width 0.3s ease;
+      }
+      .underline-center:hover::after {
+        width: 100%;
+      }
+      .slash {
+        margin: 0 0.2rem;
+      }
+
+      /* main content: center text in the middle of the page */
+      .main {
+        flex: 1;
+        display: flex;
+        justify-content: center; /* center horizontally */
+        align-items: center;     /* center vertically */
+        text-align: center;
+      }
+
+      /* footer bottom-left */
+      footer {
+        display: flex;
+        gap: 2rem;
+        margin-bottom: 1rem;
+      }
+      footer a {
+        text-decoration: none;
+        color: #000;
+        position: relative;
+      }
+      footer a::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 1px;
+        background: #000;
+        transition: width 0.3s ease;
+      }
+      footer a:hover::after {
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- top nav -->
+      <nav>
+        <div class="underline-center">
+          <span onclick="window.open('https://lanceyfoux.com','_blank')" style="cursor:pointer;">
+            lancey
+          </span>
+          <span class="slash">/</span>
+          <span onclick="window.open('https://lanceyfoux.com/cart','_self')" style="cursor:pointer;">
+            cart
+          </span>
+        </div>
+      </nav>
+
+      <!-- main content -->
+      <div class="main">
+        <div>
+          <p>no items in cart...</p>
+          <br>
+          <p>
+            <a href="https://lanceyfoux.com/shop" target="_self" style="text-decoration:none;color:#000;">
+              go to shop
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <!-- footer -->
+      <footer>
+        <a href="https://lanceyfoux.com" target="_blank">home</a>
+        <a href="https://lanceyfoux.com" target="_blank">domain</a>
+      </footer>
+    </div>
+  </body>
+</html>
