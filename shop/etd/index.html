@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>etd</title>
+    <meta name="description" content="enter the dragon digital download page">
+    <meta name="keywords" content="lancye, lancey foux, ereyec, tektime, enter the dragon">
+    <meta name="robots" content="index, follow">
+    <meta property="og:image" content="https://i.imgur.com/4gq3FrR.png">
+    <meta property="og:title" content="etd">
+    <meta property="og:description" content="enter the dragon digital download">
+    <meta name="apple-mobile-web-app-title" content="lancey">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- tab icon -->
+    <link rel="icon" type="image/png" href="https://i.imgur.com/n7jeSZw.png">
+
+    <!-- ibm plex mono bold -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=ibm+plex+mono:wght@700&display=swap" rel="stylesheet">
+
+    <!-- change tab title on visibility -->
+    <script>
+      document.addEventListener('visibilitychange', function(){
+        if(document.hidden){
+          document.title = 'lancey';
+        } else {
+          document.title = 'etd';
+        }
+      });
+    </script>
+
+    <style>
+      /* global reset, bold uppercase text */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'ibm plex mono', monospace;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      /* highlight selection color */
+      ::selection {
+        background-color: #e8eef2;
+      }
+      ::-moz-selection {
+        background-color: #e8eef2;
+      }
+
+      /* page fade-in blur */
+      html, body {
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        color: #000;
+      }
+      body {
+        opacity: 0;
+        transform: translateY(20px);
+        filter: blur(8px);
+        animation: fade-in-blur 0.5s ease forwards;
+        display: flex;
+        flex-direction: column;
+      }
+      @keyframes fade-in-blur {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+          filter: blur(8px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+          filter: blur(0);
+        }
+      }
+
+      /* container */
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* nav: top-left / top-right */
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+      }
+
+      /* underline on hover for left text & right text */
+      .underline-center {
+        position: relative;
+        display: inline-block;
+      }
+      .underline-center::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 1px;
+        background: #000;
+        transition: width 0.3s ease;
+      }
+      .underline-center:hover::after {
+        width: 100%;
+      }
+
+      /* main layout: left image, right content */
+      .main-content {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+        flex: 1;
+      }
+      .left-section, .right-section {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* container for the product image */
+      .image-container {
+        position: relative;
+        width: 100%;
+        max-width: 350px;
+        overflow: hidden;
+        cursor: pointer;
+      }
+      /* album cover image: 5% scale on hover, 5% drop shadow */
+      .album-img {
+        width: 100%;
+        border-radius: 7px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        pointer-events: none; /* can't open in new tab via right-click */
+        user-select: none;
+        transition: transform 0.3s ease;
+      }
+      .image-container:hover .album-img {
+        transform: scale(1.05);
+      }
+
+      /* right section content */
+      .product-info {
+        width: 100%;
+        max-width: 400px;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .product-title {
+        font-size: 1.3rem;
+        width: 100%;
+      }
+
+      /* row: quantity + price */
+      .qty-price-row {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      /* quantity container */
+      .qty-container {
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+      }
+      .qty-button {
+        background: #d2d8ff;
+        border: none;
+        cursor: pointer;
+        padding: 0.2rem 0.6rem;
+        font-size: 0.9rem;
+        border-radius: 4px;
+        color: #000;
+      }
+      .qty-value {
+        min-width: 2ch;
+        text-align: center;
+      }
+
+      /* add to cart button, same width as .product-title container */
+      .add-to-cart-btn {
+        background: #b5c5ff;
+        border: none;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        font-size: 0.9rem;
+        border-radius: 4px;
+        color: #000;
+        width: 100%;
+        text-align: center;
+      }
+
+      /* bottom links: home. shop. */
+      footer {
+        display: flex;
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+      footer a {
+        text-decoration: none;
+        color: #000;
+        position: relative;
+      }
+      footer a::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 1px;
+        background: #000;
+        transition: width 0.3s ease;
+      }
+      footer a:hover::after {
+        width: 100%;
+      }
+
+      /* info text */
+      .info-section {
+        font-size: 0.85rem;
+        line-height: 1.4;
+      }
+
+      /* modal overlay for image pop-up (fade in with blur) */
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.7);
+        backdrop-filter: blur(4px);
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        z-index: 999;
+        opacity: 0;
+      }
+      .modal-overlay.show {
+        display: flex;
+        animation: fadeInOverlay 0.3s ease forwards;
+      }
+      @keyframes fadeInOverlay {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      /* pop animation for the modal content */
+      .modal-content {
+        background: #fff;
+        padding: 1rem;
+        border-radius: 7px;
+        position: relative;
+        cursor: default;
+        transform: scale(0.8);
+        opacity: 0;
+        animation: pop 0.3s ease forwards;
+      }
+      @keyframes pop {
+        0% { transform: scale(0.8); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+      }
+
+      /* the enlarged image in the modal */
+      .modal-content img {
+        max-width: 90vw;
+        max-height: 80vh;
+        display: block;
+        margin: 0 auto;
+        pointer-events: auto; /* allow download link on the image */
+      }
+      /* small download link below image */
+      .download-link {
+        text-decoration: none;
+        color: #000;
+        font-size: 0.8rem;
+        display: inline-block;
+        margin-top: 0.5rem;
+        position: relative;
+      }
+      .download-link::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 1px;
+        background: #000;
+        transition: width 0.3s ease;
+      }
+      .download-link:hover::after {
+        width: 100%;
+      }
+
+      /* prevent clicks on the modal content from closing the modal */
+      .modal-content, .modal-content * {
+        cursor: auto !important;
+      }
+
+      /* smaller screens */
+      @media (max-width: 768px) {
+        .main-content {
+          flex-direction: column;
+          align-items: center;
+        }
+        .left-section, .right-section {
+          width: 100%;
+          max-width: 600px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- top nav -->
+      <nav>
+        <div class="underline-center">
+          lancey/shop/etd
+        </div>
+        <div class="underline-center">
+          cart
+        </div>
+      </nav>
+
+      <!-- main content -->
+      <div class="main-content">
+        <!-- left: image with hover scale +5%, click => modal -->
+        <div class="left-section">
+          <div class="image-container" onclick="openModal()">
+            <img
+              class="album-img"
+              src="https://images.genius.com/ccc0959d07a05a88d3b769bf2105f8e2.1000x1000x1.jpg"
+              alt="enter the dragon cover"
+            >
+          </div>
+        </div>
+
+        <!-- right: product info -->
+        <div class="right-section">
+          <div class="product-info">
+            <div class="product-title">
+              enter the dragon<br>digital download
+            </div>
+
+            <!-- quantity + price row -->
+            <div class="qty-price-row">
+              <div class="qty-container">
+                <button class="qty-button" onclick="decreaseQty()">-</button>
+                <span class="qty-value" id="qtyValue">1</span>
+                <button class="qty-button" onclick="increaseQty()">+</button>
+              </div>
+              <div style="font-size:1.2rem;">$3.00</div>
+            </div>
+
+            <!-- add to cart button (redirect to domain) -->
+            <button class="add-to-cart-btn"
+                    onclick="window.open('https://lanceyfoux.com/domain','_blank')">
+              add to cart
+            </button>
+
+            <!-- info text -->
+            <div class="info-section">
+              <p>info:</p>
+              <p>- limited to 4 per customer</p>
+              <p>- delivered via email</p>
+              <br>
+              <p>enter the dragon [prod:BNYX]</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- bottom links -->
+      <footer>
+        <a href="https://lanceyfoux.com" target="_blank">home</a>
+        <a href="https://lanceyfoux.com/shop" target="_blank">shop</a>
+      </footer>
+    </div>
+
+    <!-- modal overlay for image pop-up -->
+    <div class="modal-overlay" id="imageModal" onclick="closeModal()">
+      <div class="modal-content" onclick="event.stopPropagation()">
+        <img
+          src="https://images.genius.com/ccc0959d07a05a88d3b769bf2105f8e2.1000x1000x1.jpg"
+          alt="enter the dragon cover"
+        >
+        <!-- download link for image -->
+        <a class="download-link"
+           href="https://images.genius.com/ccc0959d07a05a88d3b769bf2105f8e2.1000x1000x1.jpg"
+           download="enter-the-dragon-cover.png">
+          download image
+        </a>
+      </div>
+    </div>
+
+    <script>
+      // quantity logic
+      let qty = 1;
+      const qtyValueEl = document.getElementById('qtyValue');
+      function updateQtyDisplay() {
+        qtyValueEl.textContent = qty;
+      }
+      function decreaseQty() {
+        if (qty > 1) {
+          qty--;
+          updateQtyDisplay();
+        }
+      }
+      function increaseQty() {
+        if (qty < 4) {
+          qty++;
+          updateQtyDisplay();
+        }
+      }
+
+      // modal logic
+      const imageModal = document.getElementById('imageModal');
+      function openModal() {
+        imageModal.classList.add('show');
+      }
+      function closeModal() {
+        imageModal.classList.remove('show');
+      }
+    </script>
+  </body>
+</html>
